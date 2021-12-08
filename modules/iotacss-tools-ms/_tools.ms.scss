@@ -5,6 +5,8 @@
 
 // Options
 
+@use "sass:math";
+
 $iota-tools-ms-ratio  : 1.2 !default;
 $iota-tools-ms-base   : 15px !default;
 $iota-tools-ms-scale  : 3 !default;
@@ -25,7 +27,7 @@ $iota-tools-ms-scale  : 3 !default;
     $num: $num * 10;
   }
   
-  @return round( $number * $num ) / $num;
+  @return math.div(round( $number * $num ), $num);
   
 }
 
@@ -47,7 +49,7 @@ $iota-tools-ms-scale  : 3 !default;
   
   @if $increment < 0 {
     @for $i from -1 through $increment {
-      $base: $base / $ratio;
+      $base: math.div($base, $ratio);
     }
   }
 
